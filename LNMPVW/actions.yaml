@@ -1,0 +1,17 @@
+- hosts: all
+  become: true
+  roles:
+    - roles: commons
+
+- hosts: db
+  become: true
+  roles:
+    - role: mariadb
+
+- hosts: web
+  become: true
+  roles:
+    - role: nginx
+    - role: php
+    - role: varnish
+    - role: wordpress

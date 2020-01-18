@@ -1,0 +1,12 @@
+# Nginx
+name_nginx: ansible.jesus.org
+root_nginx: /var/www/wordpress
+fpm-socket_nginx: unix:/run/php/php7.3-fpm.sock
+# PHP-FPM
+fpm-socket_fpm: /run/php/php7.3-fpm.sock
+# MariaDB - Wordpress
+db_mdb: wordpress
+user_mdb:wordpress
+pass_mdb: wordpress
+server_mdb: 10.0.0.8
+iface_mdb: 10.0.0.8

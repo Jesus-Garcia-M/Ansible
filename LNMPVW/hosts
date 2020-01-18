@@ -1,0 +1,5 @@
+[web]
+apache ansible_ssh_host=172.22.200.106
+
+[db]
+mariadb ansible_ssh_host=172.22.200.174

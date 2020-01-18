@@ -1,0 +1,5 @@
+handlers:
+  - name: restart-fpm
+    service:
+      name: php7.3-fpm
+      state: restarted
