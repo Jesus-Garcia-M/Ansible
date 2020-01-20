@@ -1,9 +1,0 @@
-- name: restart-nginx
-  service:
-    name: nginx
-    state: restarted
-
-- name: restart-varnish
-  service:
-    name: varnish
-    state: restarted

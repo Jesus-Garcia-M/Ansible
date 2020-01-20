@@ -1,2 +1,0 @@
-- name: Mantiene el sistema actualizado.
-  apt: update_cache=yes upgrade=yes

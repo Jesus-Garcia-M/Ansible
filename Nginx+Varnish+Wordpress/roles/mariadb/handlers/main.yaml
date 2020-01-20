@@ -1,4 +1,0 @@
-- name: restart-mdb
-  service:
-    name: mariadb
-    state: restarted

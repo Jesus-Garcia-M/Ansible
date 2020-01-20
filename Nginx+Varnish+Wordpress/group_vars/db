@@ -1,6 +1,0 @@
-# MariaDB
-iface_mdb: 10.0.0.8
-db_mdb: wordpress
-user_mdb: wordpress
-pass_mdb: wordpress
-host_mdb: 10.0.0.9
