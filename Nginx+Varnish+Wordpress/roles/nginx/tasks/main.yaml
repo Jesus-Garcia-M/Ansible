@@ -1,0 +1,12 @@
+- name: Instalación de Nginx.
+  apt:
+    name: nginx
+
+- name: Configuración del virtualhost.
+  template: >
+    src=etc/nginx/conf.d/wordpress.conf
+    dest=/etc/nginx/conf.d/wordpress.conf
+    owner=root
+    group=root
+    mode=644
+  notify: restart-nginx

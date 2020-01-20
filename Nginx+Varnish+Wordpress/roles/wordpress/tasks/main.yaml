@@ -1,0 +1,30 @@
+- name: Instalación de unzip.
+  apt:
+    name: unzip
+
+- name: Descarga de Wordpress.
+  get_url:
+    url=https://wordpress.org/latest.zip
+    dest=/tmp/latest.zip
+    mode=640
+
+- name: Descompresión de Wordpress.
+  unarchive:
+    src=/tmp/latest.zip
+    dest=/var/www/
+    remote_src=yes
+
+- name: Configuración de Wordpress.
+  template: >
+    src=var/www/wordpress/wp-config.php
+    dest=/var/www/wordpress/wp-config.php
+    owner=www-data
+    group=www-data
+    mode=740
+
+- name: Eliminar virtualhost default.
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: restart-nginx
+  notify: restart-varnish
