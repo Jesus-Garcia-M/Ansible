@@ -5,7 +5,7 @@ fpm_socket_nginx: unix:/run/php/php7.3-fpm.sock
 # PHP-FPM
 fpm_socket_fpm: /run/php/php7.3-fpm.sock
 # Wordpress
-db_mdb: wordpress
-user_mdb: wordpress
-pass_mdb: wordpress
-server_mdb: 10.0.0.9
+db_wp: wordpress
+user_wp: wordpress
+pass_wp: wordpress
+dbserver_wp: 10.0.0.14

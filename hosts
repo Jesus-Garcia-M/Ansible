@@ -1,5 +1,5 @@
 [web]
-nginx ansible_ssh_host=172.22.200.106
+nginx ansible_ssh_host=172.22.200.174
 
 [db]
-mariadb ansible_ssh_host=172.22.200.174
+mariadb ansible_ssh_host=172.22.200.106
