@@ -1,0 +1,28 @@
+- name: Instalación de MariaDB.
+  apt:
+    pkg:
+      - mariadb-server
+      - python-mysqldb
+
+- name: Configuración de acceso remoto.
+  template: >
+    src=etc/mysql/mariadb.conf.d/50-server.cnf
+    dest=/etc/mysql/mariadb.conf.d/50-server.cnf
+    owner=root
+    group=root
+    mode=644
+
+- name: Creación de la base de datos.
+  mysql_db:
+    name:
+      - "{{db_mdb}}"
+    state: present
+
+- name: Creación del usuario.
+  mysql_user:
+    name: "{{user_mdb}}"
+    password: "{{pass_mdb}}"
+    priv: '{{db_mdb}}.*:ALL'
+    host: "{{host_mdb}}"
+    state: present
+  notify: restart-mdb

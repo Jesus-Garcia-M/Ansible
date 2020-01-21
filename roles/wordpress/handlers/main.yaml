@@ -1,0 +1,11 @@
+- name: restart nginx
+  listen: restart
+  service:
+    name: nginx
+    state: restarted
+
+- name: restart varnish
+  listen: restart
+  service:
+    name: varnish
+    state: restarted
