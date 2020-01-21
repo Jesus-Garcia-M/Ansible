@@ -27,9 +27,60 @@ Define los grupos y nodos que se van a utilizar, por defecto se definen los grup
 - `root_nginx`: Indica el **document_root** del nuevo virtualhost.
 - `fpm_socket_nginx`: Indica que socket utilizará **Nginx**.
 - `fpm_socket_fpm`: Indica que socket utilizará **PHP-FPM**.
+- `root_wp`: Indica la ruta de la instalación de Wordpress.
 - `db_wp`: Indica la base de datos que utilizará Wordpress.
 - `user_wp`: Indica el usuario que utilizará Wordpress para conectarse a la base de datos.
 - `pass_wp`: Indica la contraseña del usuario que utilizará Wordpress para conectarse a la base de datos.
 - `dbserver_wp`: Indica la dirección IP del servidor de base de datos.
 
+
 ### Descripción de roles.
+#### commons/tasks/main.yaml
+Actualiza el sistema de las distintas máquinas.
+
+#### mariadb/tasks/main.yaml
+- Instala **MariaDB**.
+- Configura el acceso remoto [Template](roles/mariadb/templates/etc/3-mysqlsql/mariadb.conf.d/50-server.cnf).
+- Crea la nueva base de datos.
+- Crea el nuevo usuario.
+- Notifica a los handlers.
+
+#### mariadb/handlers/main.yaml
+Reinicia el servicio **mariadb**.
+
+#### nginx/tasks/main.yaml
+- Instala **Nginx**
+- Configura el nuevo virtualhost [Template](roles/nginx/templates/etc/nginx/conf.d/wordpress.conf).
+- Notifica a los handlers.
+
+#### nginx/handlers/main.yaml
+Reinicia el servicio **nginx**.
+
+#### php/tasks/main.yaml
+- Instala **php7.3**, **php7.3-mysql** y **php7.3-fpm**.
+- Configura **PHP-FPM** [Template](roles/php/templates/etc/php/7.3/fpm/pool.d/www.conf)
+- Notifica a los handlers.
+
+#### php/handlers/main.yaml
+Reinicia el servicio **php7.3-fpm**
+
+#### varnish/tasks/main.yaml
+- Instala **Varnish**.
+- Configura **Varnish** [File](roles/varnish/files/etc/default/varnish).
+- Configura la unidad _systemd_ de **Varnish** para que se inicie en el puerto 80 [File](roles/varnish/files/lib/systemd/system/varnish.service).
+- Notifica a los handlers.
+
+#### varnish/handlers/main.yaml
+- Reinicia el servicio **varnish**.
+- Recarga los demonios del sistema.
+
+#### wordpress/tasks/main.yaml
+- Instala unzip.
+- Descarga la última versión de wordpress.
+- Descomprime el paquete.
+- Configura Wordpress [Template](roles/wordpress/templates/var/www/wordpress/wp-config.php)
+- Elimina el virtualhost por defecto.
+- Notifica a los handlers.
+
+#### wordpress/handlers/main.yaml
+Reinicia el servicio **nginx**.
