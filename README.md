@@ -40,7 +40,7 @@ Actualiza el sistema de las distintas máquinas.
 
 #### mariadb/tasks/main.yaml
 - Instala **MariaDB**.
-- Configura el acceso remoto [Template](roles/mariadb/templates/etc/3-mysqlsql/mariadb.conf.d/50-server.cnf).
+- Configura el acceso remoto [Template](roles/mariadb/templates/etc/mysql/mariadb.conf.d/50-server.cnf).
 - Crea la nueva base de datos.
 - Crea el nuevo usuario.
 - Notifica a los handlers.
