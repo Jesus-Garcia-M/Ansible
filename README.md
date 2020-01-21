@@ -1,5 +1,5 @@
 ### Descripción del proyecto.
-El proyecto consiste en la instalación de un servidor **Mariadb** en una de las máquinas y una combinación de **Nginx**, **Varnish** y **Wordpress** en la otra. En el caso de que se utilice con una única máquina será necesario modificar algunas de las variables, las cuales se detallarán más adelante.
+El proyecto consiste en la instalación de un servidor **Mariadb** en una de las máquinas y una combinación de **Nginx**, **Varnish** y **Wordpress** en la otra. En el caso de que se utilice con una única máquina será necesario modificar algunas variables.
 
 ### Descripción de ficheros.
 #### actions.yaml
