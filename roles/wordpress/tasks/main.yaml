@@ -17,7 +17,7 @@
 - name: Configuración de Wordpress.
   template: >
     src=var/www/wordpress/wp-config.php
-    dest="{{root_wp}}wordpress/wp-config.php
+    dest="{{root_wp}}wordpress/wp-config.php"
     owner=www-data
     group=www-data
     mode=740
